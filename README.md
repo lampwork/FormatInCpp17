@@ -5,6 +5,11 @@ a toy which can be used in cpp17; std::format alike
 
 # examples
 ```c++
+struct Type {
+    friend std::ostream &operator<<(std::ostream &o, const Type &t)
+    { return o << "this is type operator<<()"; }
+};
+
 int main()
 {
     using CompileTime::operator""_cts;
@@ -22,3 +27,6 @@ int main()
                        1.1) << std::endl;
 }
 ```
+
+# note
+user defined type can be used, only if it implements the function `std::osteram &operator<<(const std::ostream &, xxx);`
